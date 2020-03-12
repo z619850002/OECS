@@ -1,0 +1,263 @@
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>DeepPS</title>
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif"}
+table.TableGrid
+	{border:1.0pt solid black;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>DeepPS</title>
+
+<style>
+<!--
+div.Section1
+	{page:Section1;}
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif"}
+table.TableGrid
+	{border:1.0pt solid black;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+</head>
+
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<body>
+
+<table class="MsoNormalTable" border="0" cellpadding="0" width="1217" id="table3" height="35">
+	<tr>
+		<td valign="top" style="width: 1211px; height: 31px; padding: .75pt" align="left">
+		<p class="text">
+		<span lang="en-us"><font face="Calibri" size="5" color="#0000FF">
+		<b>Vision-based Parking-slot Detection: A DCNN-based Approach and A 
+		Large-scale Benchmark Dataset</b></font></span><p class="text">
+		<span lang="en-us"><font face="Calibri" size="4" color="#0000FF">
+		Lin Zhang<sup>1</sup>,&nbsp;Junhao Huang</font></span><font face="Calibri" size="4" color="#0000FF"><sup>1</sup><span lang="en-us">, 
+		Xiyuan Li</span><sup>1</sup><span lang="en-us">, and Lu Xiong</span><sup>2</sup></font><p class="text">
+		<span lang="en-us"><font face="Calibri" size="4" color="#0000FF"><sup>1</sup>School 
+		of Software Engineering, Tongji University, Shanghai, China</font></span><p class="text">
+		<font face="Calibri" size="4" color="#0000FF"><sup>2</sup><span lang="en-us">Intelligent 
+		Vehicle Institute, Tongji University, 
+		Shanghai, China</span></font></td>
+	</tr>
+	</table>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Introduction</font></b></span></p>
+<p>
+<span style="font-size: 13pt; font-family: Calibri; color: windowtext" lang="EN-US">
+This is the website for our paper &quot;<a href="parkingslot.pdf">Vision-based Parking-slot Detection: A DCNN-based Approach and A Large-scale Benchmark Dataset<span style="color: #000000">, 
+IEEE Trans. Image Processing 27 (11) 5350-5364, 2018</span></a>&quot;</span></p>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Tongji Parking-slot Dataset 
+2.0</font></b></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">
+<a href="https://drive.google.com/open?id=1i1pSnkIRyTgt6kmWr_sN6jrasX2HngWc">ps2.0.zip</a></font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">The images in 
+this dataset were surround-view images synthesized from four low-cost fisheye 
+cameras. Various parking-slot types were considered, including the vertical 
+ones, the parallel ones, and the slant ones. When collecting outdoor samples, 
+different illumination conditions and weather conditions were considered. 
+Typical image samples contained in this dataset is shown below. </font></span></p>
+<p>
+<img border="0" src="ps%20image%20samples.jpg" width="914" height="435"></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">This dataset 
+contains 9827 training images and 2338 test images. In order to test the 
+performance of a parking-slot detection algorithm under different special 
+conditions, test images are also grouped into 6 categories,</font></span></p>
+<table border="1" width="31%">
+	<tr>
+		<td width="232">
+		<p align="center"><b><font face="Calibri">Subset</font></b></td>
+		<td>
+		<p align="center"><b><font face="Calibri">Number of samples</font></b></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">indoor parking lot</font></td>
+		<td>
+		<p align="center"><font face="Calibri">226</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor normal daylight</font></td>
+		<td>
+		<p align="center"><font face="Calibri">546</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor rainy</font></td>
+		<td>
+		<p align="center"><font face="Calibri">244</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor shadow</font></td>
+		<td>
+		<p align="center"><font face="Calibri">1127</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor street light</font></td>
+		<td>
+		<p align="center"><font face="Calibri">147</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor slanted</font></td>
+		<td>
+		<p align="center"><font face="Calibri">48</font></td>
+	</tr>
+	</table>
+<p align="left"><span lang="en-us"><font face="Calibri" style="font-size: 13pt">
+We have also developed a matlab labeling tool for labeling parking-slots on 
+surround-view images, whose interface is shown in the image below. </font>
+</span></p>
+<p align="left"><img border="0" src="index.1.jpg" width="687" height="458"></p>
+<p align="left"><font face="Calibri" style="font-size: 13pt">This labeling tool 
+and the user instructions can be found here
+<a href="https://github.com/Teoge/MarkToolForParkingLotPoint">
+https://github.com/Teoge/MarkToolForParkingLotPoint</a>. </font></p>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Source Codes</font></b></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">Note: all these 
+codes are implemented in Matlab and can only run on Win64 OS. </font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">1. 
+<a href="https://drive.google.com/open?id=1zIY_TNahwXVf5KMHWl06yaXuxx0Ccmeu">MarkingPointDetectionAndPerformanceMeasure.zip</a></font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">These codes can 
+fulfill three tasks, detecting marking-points on given surround-view images, 
+plotting the &quot;missing rates VS FPPI&quot; curve, and calculating the mean 
+and stand deviation of localization errors. The figure below is the plot of 
+&quot;missing rates VS FPPI&quot; achieved by our yolo-based marking-point detector. 
+Its LAMR is 0.35%. </font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt"> &nbsp;<img border="0" src="index.2.jpg" width="517" height="327"></font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">2.
+<a href="https://drive.google.com/open?id=1qPx33fYNY8MhX7hv8lNAHAhlP14aNoDJ">DeepPSMat.zip</a></font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">System 
+configurations for running DeepPSDemo: Win10 64bit, Matlab2017a/b, CUDA8.0</font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">This is the 
+matlab version for DCNN-based parking-slot detection. The readme file is
+<a href="read%20me.pdf">here</a>.</font></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">The 
+precision-recall rates of our parking-slot detection approach DeepPS on the test 
+set of the dataset ps2.0 are summarized in the following table, </font></span></p>
+<table border="1" width="31%">
+	<tr>
+		<td width="232">
+		<p align="center"><b><font face="Calibri">Subset</font></b></td>
+		<td>
+		<p align="center"><b><font face="Calibri">Precision</font></b></td>
+		<td width="134">
+		<p align="center"><b><font face="Calibri">Recall</font></b></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">indoor parking lot</font></td>
+		<td>
+		<p align="center"><font face="Calibri">99.41%</font></td>
+		<td width="134">
+		<p align="center"><font face="Calibri">97.67%</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor normal daylight</font></td>
+		<td>
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">99.49%</font></td>
+		<td width="134">
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">99.23%</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor rainy</font></td>
+		<td>
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">100%</font></td>
+		<td width="134">
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">99.42%</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor shadow</font></td>
+		<td>
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">99.86%</font></td>
+		<td width="134">
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">99.28%</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor street light</font></td>
+		<td>
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">100%</font></td>
+		<td width="134">
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">100%</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">outdoor slanted</font></td>
+		<td>
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">96.25%</font></td>
+		<td width="134">
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">95.06%</font></td>
+	</tr>
+	<tr>
+		<td width="232">
+		<p align="center"><font face="Calibri">all</font></td>
+		<td>
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">99.54%</font></td>
+		<td width="134">
+		<p style="text-align: center; direction: ltr; unicode-bidi: embed; word-break: normal; punctuation-wrap: hanging; margin-left: 0in; margin-top: 0pt; margin-bottom: 0pt">
+		<font face="Calibri">98.89%</font></td>
+	</tr>
+</table>
+<hr>
+<p><span lang="en-us"><b><font face="Calibri" size="5">Demo Videos</font></b></span></p>
+<p>
+<span lang="en-us"><font face="Calibri" style="font-size: 13pt">The following 
+are two demo videos demonstrating the capability of our DeepPS approach for 
+detecting parking-slots. </font></span></p>
+<video src="demoPart1.mp4" width="600" height="450" controls preload></video>
+<video src="demoPart2.mp4" width="600" height="450" controls preload></video>
+<hr>
+<p align="justify"><font face="Calibri">Last update: <span lang="en-us">Nov. 23,
+</span>201<span lang="en-us">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+</body>
+</html>
