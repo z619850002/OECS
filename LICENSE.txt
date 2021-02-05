@@ -1,0 +1,6 @@
+OECS is released under a GPLv3 license (see License-gpl.txt).
+
+For a closed-source version of OECS for commercial purposes, please contact the authors.
+
+If you use OECS in an academic work, please cite the most relevant publication associated by visiting:
+https://github.com/z619850002/OECS
