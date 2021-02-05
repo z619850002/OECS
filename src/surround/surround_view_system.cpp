@@ -327,12 +327,23 @@ bool SurroundView::AddEdge(int nIndex, int nCameraIndex,
 	double nCoef_Right = cv::mean(mBirdseyeGray_Right).val[0]/cv::mean(mMeasurementGray_Right).val[0];
 	double nCoef_Left = cv::mean(mBirdseyeGray_Left).val[0]/cv::mean(mMeasurementGray_Left).val[0];
 
+
+	PixelSelection iSelection;
+	// vector<cv::Point2d> gPointsRight = iSelection.GetPixels(mBirdseyeGray_Right);
+	// vector<cv::Point2d> gPointsLeft = iSelection.GetPixels(mBirdseyeGray_Left);
+	vector<cv::Point2d> gPointsRight = iSelection.GetPixels(mBirdseyeROI_Right, mBirdseyeROI_Left);
+	vector<cv::Point2d> gPointsLeft = iSelection.GetPixels(mBirdseyeROI_Left, mBirdseyeROI_Right);
+	
 	//Add edges in the right region.
-	for (int u=0;u<iRightROI.width;u++){
-		for (int v=0;v<iRightROI.height;v++){
+	for (cv::Point2d iPoint2d : gPointsRight){
+
+	//Add edges in the right region.
+	// for (int u=0;u<iRightROI.width;u++){
+	// 	for (int v=0;v<iRightROI.height;v++){
 			//Get the surround-view coordinate of the point.
-			int nU = u + iRightROI.x;
-			int nV = v + iRightROI.y;
+			int nU = iPoint2d.x + iRightROI.x;
+			int nV = iPoint2d.y + iRightROI.y;
+			int u = iPoint2d.x, v = iPoint2d.y;
 			cv::Mat mp_surround = (cv::Mat_<double>(3 , 1) << nU, nV, 1);
 			//Convert surround-view coordinate to ground coordinate.
 			cv::Mat mP_G = mK_G_Augment * mp_surround;
@@ -362,15 +373,19 @@ bool SurroundView::AddEdge(int nIndex, int nCameraIndex,
             	gOriginROI_Right,
             	nMeasurement,
             	&mGrayROI_Right);
-		}		
+		// }		
 	}
 
 	//Add edges in the left region.
-	for (int u=0;u<iLeftROI.width;u++){
-		for (int v=0;v<iLeftROI.height;v++){
+	for (cv::Point2d iPoint2d : gPointsLeft){
+			int nU = iPoint2d.x + iLeftROI.x;
+			int nV = iPoint2d.y + iLeftROI.y;
+			int u = iPoint2d.x, v = iPoint2d.y;
+	// for (int u=0;u<iLeftROI.width;u++){
+	// 	for (int v=0;v<iLeftROI.height;v++){
 			//Get the surround-view coordinate of the point.
-			int nU = u + iLeftROI.x;
-			int nV = v + iLeftROI.y;
+			// int nU = u + iLeftROI.x;
+			// int nV = v + iLeftROI.y;
 			cv::Mat mp_surround = (cv::Mat_<double>(3 , 1) << nU, nV, 1);
 			//Convert surround-view coordinate to ground coordinate.
 			cv::Mat mP_G = mK_G_Augment * mp_surround;
@@ -387,7 +402,7 @@ bool SurroundView::AddEdge(int nIndex, int nCameraIndex,
             	gOriginROI_Left,
             	nMeasurement,
             	&mGrayROI_Left);
-		}		
+		// }		
 	}	
 }
 
